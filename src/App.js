@@ -1,21 +1,17 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import required modules
+import React from 'react';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+import Search from './components/Search';
+import Results from './components/Results';
+
+// export our app component
+export default class AppComponent extends React.Component {
+    render() {
+        return (
+            <div>
+                <Search />
+                <Results />
+            </div>
+        )
+    }
 }
-
-export default App;
