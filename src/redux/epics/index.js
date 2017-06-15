@@ -2,9 +2,9 @@
 import { combineEpics } from 'redux-observable';
 
 // Epics to combine
-import dummyEpic from './dummy';
+import searchEpic from './search';
 
 // export our rootEpic
 export default combineEpics(
-    dummyEpic
+    searchEpic
 );

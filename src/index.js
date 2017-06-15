@@ -12,13 +12,10 @@ import rootEpic from './redux/epics';
 // We'll also need our app component
 import App from './App';
 
-// define an initial starting state
-const initialState = {};
-
 // create a redux store to be provided to our entire app
 const store = createStore(
     rootReducer, 
-    initialState, 
+    {}, 
     compose(
         applyMiddleware(
             createEpicMiddleware(rootEpic)
