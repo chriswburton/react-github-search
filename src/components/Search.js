@@ -27,14 +27,20 @@ class SearchComponent extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Github User Search</h1>            
-                <input type="text" 
-                    placeholder="Start typing to begin searching..." 
-                    value={this.state.username}
-                    onChange={this.handleChange}
-                />
-            </div>
+            <form className="pl0 mt5 measure center black-80">
+                <h1>Github User Search</h1>
+                <div className="measure">
+                    <label htmlFor="name" className="f6 b db mb2">Please use the input below to search users on Github <span className="normal black-60"></span></label>
+                    <input id="name" 
+                        className="input-reset ba b--black-20 pa2 mb2 db w-100" 
+                        type="text" 
+                        placeholder="Start typing to begin searching..." 
+                        value={this.state.username}
+                        onChange={this.handleChange}
+                        aria-describedby="name-desc" />
+                    <small id="name-desc" className="f6 black-60 db mb2">Your search may take a few seconds to complete.</small>
+                </div>
+            </form>
         )
     }    
 }

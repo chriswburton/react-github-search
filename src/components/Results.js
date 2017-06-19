@@ -4,19 +4,22 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+// our renderer for each result
+import ResultRender from './result/ResultRender';
+
 // we'll need our search actions
 import * as searchActions from '../redux/actions/search';
 
-// declare our stateless functional results component
+// declare our results component
 export class ResultsComponent extends React.Component {
     render() {
         const results = this.props.response.data.items || [];
         return (                 
-            <ul>
+            <ul className="list pl0 mt5 measure center">
                 { 
                     results.length > 0                    
-                    ? results.map(result => <li key={result.id}>{ result.login }</li>) 
-                    : <li>No results to show</li>
+                    ? results.map(result => <ResultRender key={result.id} {...result} />) 
+                    : <li>{ this.props.searching ? 'Searching...' : 'No results to show' }</li>
                 }
             </ul>
         );
@@ -30,7 +33,8 @@ ResultsComponent.propTypes = {
 
 // we'll map the values we need from our redux state
 const mapStateToProps = state => ({ 
-    response: state.response 
+    response: state.response,
+    searching: state.searching
 });
 
 // we'll map the actions we'll be dispatching to

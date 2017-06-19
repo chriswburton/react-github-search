@@ -13,4 +13,4 @@ export default (action$, state) =>
             ajax.getJSON(`https://api.github.com/search/users?q=${action.payload}`)
                 // we can now return our response to be actioned by our reducers
                 .map(payload => ({ type: SEARCH_USERS_FULFILLED, payload }))
-        );
+        )        
