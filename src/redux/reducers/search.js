@@ -1,5 +1,5 @@
 // import our required constants
-import { SEARCH_USERS } from '../constants';
+import { SEARCH_USERS, SEARCH_USERS_FULFILLED } from '../constants';
 
 // export reducer functions
 export function searching (state = false, action) {
@@ -9,21 +9,33 @@ export function searching (state = false, action) {
       return {
         ...state,
         searching: true      
+      };  
+    case SEARCH_USERS_FULFILLED:      
+      // we'll update the app state to show the search is complete
+      return {
+        ...state,
+        searching: false     
       };      
     default:
       return state;
   }
-}
+};
 
-export function results (state = false, action) {
+export function response (state = { data: {} }, action) {
   switch (action.type) {
     case SEARCH_USERS:
       // we'll clear any pre-existing search results
       return {
         ...state,
-        results: []
+        data: {}
       }
+    case SEARCH_USERS_FULFILLED:      
+      // we can put our payload into our state as 'results'
+      return {
+        ...state,
+        data: action.payload
+      };       
     default:
       return state;
   }
-}
+};
