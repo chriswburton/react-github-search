@@ -21,8 +21,10 @@ class SearchComponent extends React.Component {
         const username = inputEvent.target.value;
         // update our local state
         this.setState({username});
-        // dispatch our search action
-        this.props.actions.searchUsers(username);
+        // dispatch our search action - ONLY if we have a valid search string
+        if (username.trim().length > 0) {
+            this.props.actions.searchUsers(username);
+        }
     }
 
     render() {
